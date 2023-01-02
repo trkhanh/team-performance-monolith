@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.0.1'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.kaoengine'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+	implementation group: 'org.springframework.data', name: 'spring-data-mongodb', version: '3.2.12'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+	//	Develop dependencies
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+	//	Test dependencies
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task helloWorld {
+	println("Hello World")
+}
